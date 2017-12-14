@@ -1,6 +1,7 @@
 # Imports
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
 
 
 # Initialize the app
@@ -18,7 +19,8 @@ app.jinja_env.lstrip_blocks = True
 
 # Define the database object
 db = SQLAlchemy(app)
+Bootstrap(app)
 
 
-# Load the views
-from app import views
+# Load the views and models
+from app import views, models
