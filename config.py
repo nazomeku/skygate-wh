@@ -10,3 +10,7 @@ DEBUG = True
 # Define the database
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(BASE_DIR, 'wh.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+# Secret key for signing cookies
+SECRET_KEY = "secret"

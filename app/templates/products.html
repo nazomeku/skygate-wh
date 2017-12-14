@@ -1,6 +1,21 @@
-{% extends 'layout.html' %}
+{% import "bootstrap/utils.html" as utils %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "layout.html" %}
+{% block title %}Products{% endblock %}
 {% block body %}
 
-      <h1>Products</h1>
-      <p>List</p>
+    <div class="jumbotron">
+      <h1 class="display-4">Products</h1><hr>
+      <p class="text-center">
+      {% for product in products %}
+        <a href="{{ url_for('edit_product',product_id=product.id) }}">{{ product.name }}</a><br>
+      {% endfor %}
+      </p>
+      <hr>
+      <div class="content-section"> {{ utils.flashed_messages() }}
+        <div>
+          {{ wtf.quick_form(form, button_map={'submit':'primary'}) }}
+        </div>
+      </div>
+    </div>
 {% endblock %}
