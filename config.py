@@ -12,5 +12,5 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + path.join(BASE_DIR, 'wh.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-# Secret key for signing cookies
+# Secret key for CSRF and stuff
 SECRET_KEY = "secret"
