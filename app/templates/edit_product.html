@@ -23,10 +23,8 @@
             <td class="table-info">{{product.quantity}}</td>
             <td class="table-success">
               <form method="POST" action="{{ url_for('update_product', product_id=product.id) }}">
-                <input type="hidden" value="{{product.name}}" name="oldname">
-                <input type="text" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.name}}" name="newname">
-                <br><input type="hidden" value="{{product.quantity}}" name="oldquantity">
-                <input type="text" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.quantity}}" name="newquantity">
+                <input type="text" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.name}}" name="new_name">
+                <input type="text" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.quantity}}" name="new_quantity">
                 <br><input class="btn btn-success" type="submit" value="Update">
               </form>
             </td>

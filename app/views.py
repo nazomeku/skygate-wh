@@ -44,14 +44,8 @@ def delete_product(product_id):
 def update_product(product_id):
     """Update product."""
     product = Product.query.get_or_404(product_id)
-    newname = request.form.get('newname')
-    oldname = request.form.get('oldname')
-    newquantity = request.form.get('newquantity')
-    oldquantity = request.form.get('oldquantity')
-    product = Product.query.filter_by(name=oldname).first()
-    product = Product.query.filter_by(quantity=oldquantity).first()
-    product.name = newname
-    product.quantity = newquantity
+    product.name = request.form.get('new_name')
+    product.quantity = request.form.get('new_quantity')
     db.session.commit()
     flash('You have successfully updated the product.')
     return redirect(url_for('products'))
