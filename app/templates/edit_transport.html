@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Edit transport{% endblock %}
+{% block body %}
+
+    <div class="jumbotron">
+      <h1 class="display-4">Edit transport</h1><hr><br>
+      <p class="text-center">
+      </p>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-warning">
+            <th>ID</th>
+            <th>Product name</th>
+            <th>Select product</th>
+            <th>Suspend transport</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="table-info" scope="row">{{transport.id}}</th>
+            <td class="table-info">{{transport.product_name}}</td>
+            <td class="table-success">
+              <form method="POST" action="{{ url_for('update_transport', transport_id=transport.id) }}">
+                <select name="new_product" class="selectpicker form-control">
+                  {% for product in wh %}
+                  <option value="{{ product.name }}">{{ product.name }}</option>
+                  {% endfor %}
+                </select>
+                <br><input class="btn btn-success" type="submit" value="Update">
+              </form>
+            </td>
+            <td class="table-danger">
+              <form method="POST" action="{{ url_for('suspend_transport', transport_id=transport.id) }}">
+                <input class="btn btn-danger" type="submit" value="Suspend">
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
