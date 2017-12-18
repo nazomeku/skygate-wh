@@ -8,7 +8,7 @@ class ManageProduct(FlaskForm):
     """Form to manage products."""
 
     name = StringField('Name', validators=[DataRequired("Please enter product name."), Length(min=1, max=50)])
-    quantity = StringField('Quantity', validators=[DataRequired("Please enter product quantity."), Length(min=1, max=3)])
+    quantity = StringField('Quantity', validators=[DataRequired("Please enter product quantity."), Length(min=1, max=10)])
     submit = SubmitField('Add product')
 
     def validate_name(self, field):
