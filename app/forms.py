@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import ValidationError, StringField, SubmitField
-from wtforms.validators import DataRequired, Length
+from wtforms import ValidationError, StringField, SubmitField, IntegerField
+from wtforms.validators import DataRequired, Length, required
 from .models import Product
 
 
@@ -8,7 +8,7 @@ class ManageProduct(FlaskForm):
     """Form to manage products."""
 
     name = StringField('Name', validators=[DataRequired("Please enter product name."), Length(min=1, max=50)])
-    quantity = StringField('Quantity', validators=[DataRequired("Please enter product quantity."), Length(min=1, max=10)])
+    quantity = IntegerField('Quantity', validators=[required("Please enter a number.")])
     submit = SubmitField('Add product')
 
     def validate_name(self, field):
