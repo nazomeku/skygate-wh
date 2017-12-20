@@ -4,26 +4,24 @@
 
     <div class="jumbotron">
       <h1 class="display-4">Edit product</h1><hr><br>
-      <p class="text-center">
-      </p>
       <table class="table table-bordered">
         <thead>
           <tr class="table-warning">
             <th>ID</th>
             <th>Product name</th>
             <th>Quantity</th>
-            <th>Update product</th>
+            <th>Update quantity</th>
             <th>Delete product</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th class="table-info" scope="row">{{product.id}}</th>
+            <td class="table-info">{{product.id}}</td>
             <td class="table-info">{{product.name}}</td>
             <td class="table-info">{{product.quantity}}</td>
             <td class="table-success">
               <form method="POST" action="{{ url_for('update_product', product_id=product.id) }}">
-                <input type="text" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.quantity}}" name="new_quantity">
+                <input type="number" class="form-control form-control-sm" id="smFormGroupInput" value="{{product.quantity}}" name="new_quantity">
                 <br><input class="btn btn-success" type="submit" value="Update">
               </form>
             </td>
