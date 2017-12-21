@@ -8,7 +8,7 @@
           <thead>
             <tr class="table-warning">
               {% for x in range(10) %}
-              <th>{{x}}0-{{x}}9</th>
+              <th>{{x}}</th>
               {% endfor %}
             </tr>
           </thead>
@@ -17,7 +17,7 @@
             {% for y in range(10) %}
             <tr>
               {% for z in range(0,100,10) %}
-              {% if shelfs[y+z].product_id != None %}
+              {% if shelfs[y+z].product_id != 0 and shelfs[y+z].product_id != None %}
               <td class="table-success">
               {% else %}
               <td class="table-danger">
@@ -25,10 +25,11 @@
                 <div class="form-group">
                   <input name="old_shelf_{{y+z}}" type="hidden" value="{{ shelfs[y+z].product_id }}">
                   <select name="shelf_{{y+z}}" class="form-control">
-                    <option value="None" disabled selected>{% if shelfs[y+z].product_id == None %}0{% else %}{{ shelfs[y+z].product_id}}{% endif %}</option>
+                    <option value="None" disabled selected>{% if shelfs[y+z].product_id not in id_list %}0{% else %}{{ all_products[shelfs[y+z].product_id-1].name }}{% endif %}</option>
                     {% for product in all_products %}
-                    <option value="{{ product.id }}">{{ product.id }}</option>
+                    <option value="{{ product.id }}">{{ product.name }}</option>
                     {% endfor %}
+                    <option value="0">remove</option>
                   </select>
                 </div>
               </td>
