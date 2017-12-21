@@ -1,5 +1,10 @@
       <div class="header clearfix">
         <nav>
+          <ul class="nav nav-pills float-left">
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('index')}}"><h4 class="text-muted">Warehouse</h4></a>
+            </li>
+          </ul>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('shelfs') }}">Shelfs <span class="sr-only">(current)</span></a>
@@ -12,5 +17,4 @@
             </li>
           </ul>
         </nav>
-        <h3 class="text-muted">Warehouse</h3>
       </div>
