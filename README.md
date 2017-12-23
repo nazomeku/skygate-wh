@@ -16,7 +16,8 @@ Recruitment task for internship in [Skygate](https://skygate.pl/) with [live dem
 
 - some validations
 - code cleaning
-- tests
+- better sort
+- more tests
 
 ### Technologies used:
 - Python 3.6
