@@ -62,15 +62,23 @@ $ source skygate/bin/activate
 ```sh
 (skygate) $ pip install -r requirements.txt
 ```
-5. Test if application works (remember to allow port 5000 on firewall).
+5. Initlize database.
+```sh
+$ python
+>>> from app import db
+>>> db.create_all()
+>>> exit()
+$ python run.py
+```
+6. Test if application works (remember to allow port 5000 on firewall).
 ```sh
 (skygate) $ gunicorn --bind 0.0.0.0:5000 wsgi:app
 ```
-6. Deactivate virtual enviroment.
+7. Deactivate virtual enviroment.
 ```sh
 $ deactivate
 ```
-7. Create service file (remember to change your username).
+8. Create service file (remember to change your username).
 ```sh
 $ sudo nano /etc/systemd/system/skygate.service
 ```
@@ -89,23 +97,27 @@ ExecStart=/home/username/skygate/skygate/bin/gunicorn --workers 3 --bind unix:sk
 [Install]
 WantedBy=multi-user.target
 ```
-8. Start application.
+9. Start application.
 ```sh
 $ sudo systemctl start skygate
 ```
-9. Enable application to start at boot.
+10. Enable application to start at boot.
 ```sh
 $ sudo systemctl enable skygate
 ```
-10. Configure your domain.
+11. Configure your domain.
 ```sh
 $ sudo nano /etc/nginx/sites-available/skygate
 ```
-11. Enable your site.
+12. Enable your site.
 ```sh
 $ sudo ln -s /etc/nginx/sites-available/skygate /etc/nginx/sites-enabled
 ```
-12. Restart nginx.
+13. Check if there is no error with nginx config.
+```sh
+$ sudo nginx -t
+```
+14. Restart nginx.
 ```sh
 $ sudo systemctl restart nginx
 ```
