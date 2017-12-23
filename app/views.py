@@ -85,7 +85,7 @@ def update_shelfs():
         product_names.append(product.name)
 
     if shelf_list.count(product_ids[0]) > product_quantity_count[0]:
-        flash('There is not enough product (' + str(product_names[0]) + ') in warehouse to assign.')
+        flash('Not enough product (' + str(product_names[0]) + ') in warehouse to assign.')
         # Revert changes to database.
         for x in range(100):
             all_shelfs[x].product_id = shelf_list_pre[x]
@@ -219,8 +219,8 @@ def suspend_transport(transport_id):
 @app.route('/transfer', methods=['POST'])
 def transfer():
     """Transfer products from shelfs to transports."""
-    global current_shelf
-    global total_shifts
+    total_shifts = -1
+    current_shelf = 0
 
     # Create list for orders with product ids.
     order_list = []
@@ -326,7 +326,17 @@ def sort_shelfs():
         if i < low:
             low = i
 
-    flash('Rotations before sort: ' + str(shift_check_single[0]) + '. Rotations after sort: ' + str(low) + '. Rotation was applied automatically.')
+    count = 0
+    for x in range(100):
+        if all_shelfs[x].product_id == 0:
+            count += 1
+    print(count)
+    if count == 100:
+        flash('No products available on shelfs.')
+    elif count >= 45:
+        flash('Please fill up 50%+ of shelfs for better results.')
+    else:
+        flash('Rotations before sort: ' + str(shift_check_single[0]) + '. Rotations after sort: ' + str(low) + '. Rotation was applied automatically.')
 
     shelf_list_split = adjust(shelf_list, 10)
 
@@ -344,7 +354,7 @@ def sort_shelfs():
 
 @app.route('/random_fill', methods=['POST'])
 def random_fill():
-    """Random shelfs fill (1-3 per shelf rule ignored)."""
+    """Random shelfs fill (with 1-3 per shelf rule)."""
     all_shelfs = Shelf.query.all()
     all_products = Product.query.all()
     my_rnd = []
@@ -381,17 +391,14 @@ def transfer_products(name, new_order, shelf_list_split):
 
     for x in range(10):
         if len(new_order) > 0:
-            #print(new_order)
             for i in new_order:
                 if i in shelf_list_split[x]:
                     shelf_list_split[x].insert(shelf_list_split[x].index(i), name)
                     shelf_list_split[x].remove(i)
-                    #print(shelf_list_split[x])
             current_shelf += 1
             total_shifts += 1
             new_order = [new_order[0]]*(len(new_order)-shelf_list_split[x].count(name))
-            #print(new_order)
         else:
             #return print('transport completed, currently on shelf number: ' + str(current_shelf) + ' total shifts: ' + str(total_shifts))
-            #return total_shifts
-            pass
+            return total_shifts
+
