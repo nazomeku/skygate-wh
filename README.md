@@ -54,6 +54,10 @@ $ git clone https://github.com/nazomeku/skygate-wh.git
 ```sh
 $ mv skygate-wh skygate && cd skygate && mv run.py wsgi.py
 ```
+3. Create virtual enviroment.
+```sh
+$ virtualenv skygate
+```
 3. Activate virtual enviroment.
 ```sh
 $ source skygate/bin/activate
