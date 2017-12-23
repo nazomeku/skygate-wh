@@ -1,0 +1,45 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "layout.html" %}
+{% block title %}Edit shelfs{% endblock %}
+{% block body %}
+
+      <div class="jumbotron">
+        <h1 class="display-4">Edit shelfs</h1><hr>{{ utils.flashed_messages() }}
+        <table class="table table-bordered">
+          <thead>
+            <tr class="table-warning">
+              {% for x in range(10) %}
+              <th>{{x}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            <form form method="POST" action="{{url_for('update_shelfs')}}">
+            {% for y in range(10) %}
+            <tr>
+              {% for z in range(0,100,10) %}
+              {% if shelfs[y+z].product_id != 0 and shelfs[y+z].product_id != None %}
+              <td class="table-success">
+              {% else %}
+              <td class="table-danger">
+              {% endif %}
+                <div class="form-group">
+                  <input name="old_shelf_{{y+z}}" type="hidden" value="{{ shelfs[y+z].product_id }}">
+                  <select name="shelf_{{y+z}}" class="form-control">
+                    <option value="None" disabled selected>{% if shelfs[y+z].product_id not in id_list %}0{% else %}{{ shelfs[y+z].product_id }}{% endif %}</option>
+                    {% for product in all_products %}
+                    <option value="{{ product.id }}">id{{product.id}} {{ product.name }}</option>
+                    {% endfor %}
+                    <option value="0">remove</option>
+                  </select>
+                </div>
+              </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+          <input class="btn btn-success" type="submit" value="Update shelfs">
+        </form>
+      </div>
+{% endblock %}

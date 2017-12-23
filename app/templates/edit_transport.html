@@ -4,8 +4,6 @@
 
     <div class="jumbotron">
       <h1 class="display-4">Edit transport</h1><hr><br>
-      <p class="text-center">
-      </p>
       <table class="table table-bordered">
         <thead>
           <tr class="table-warning">
@@ -17,13 +15,14 @@
         </thead>
         <tbody>
           <tr>
-            <th class="table-info" scope="row">{{transport.id}}</th>
+            <td class="table-info">{{transport.id}}</td>
             <td class="table-info">{{transport.product_name}}</td>
             <td class="table-success">
               <form method="POST" action="{{ url_for('update_transport', transport_id=transport.id) }}">
-                <select name="new_product" class="selectpicker form-control">
-                  {% for product in wh %}
-                  <option value="{{ product.name }}">{{ product.name }}</option>
+                <select name="new_product" class="form-control">
+                  <option disabled selected>{{transport.product_name}}</option>
+                  {% for product in all_products %}
+                  <option value="{{ product.name }}">id{{product.id}} {{ product.name }}</option>
                   {% endfor %}
                 </select>
                 <br><input class="btn btn-success" type="submit" value="Update">

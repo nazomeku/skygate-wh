@@ -3,15 +3,16 @@
 
       <div class="jumbotron">
         <h1 class="display-4">Warehouse</h1><hr>
-        <p class="lead">...</p>
-      </div>
-      <div class="row marketing">
-        <div class="col-lg-12">
-          <h4>TBD</h4>
-          <li>prod-trans (suspend transport if product deleted)</li>
-          <li>wh (assign, sort, transfer)</li>
-          <li>validations</li>
-          <li>tests</li>
+        <div class="row marketing">
+          <div class="col-md-4">
+            <a href="{{url_for('shelfs')}}" class="btn btn-primary" role="button">Manage shelfs</a>
+            </div>
+          <div class="col-md-4">
+            <a href="{{url_for('products')}}" class="btn btn-primary" role="button">Manage products</a>
+          </div>
+          <div class="col-md-4">
+            <a href="{{url_for('transports')}}" class="btn btn-primary" role="button">Manage transports</a>
+          </div>
         </div>
       </div>
 {% endblock %}

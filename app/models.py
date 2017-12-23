@@ -10,7 +10,7 @@ class Product(db.Model):
     name = db.Column(db.String(50), nullable=False, unique=True)
     quantity = db.Column(db.Integer, nullable=False)
     transports = db.relationship('Transport', backref='product', lazy='dynamic')
-
+    shelfs = db.relationship('Shelf', backref='product', lazy='dynamic')
 
 class Transport(db.Model):
     """Create a Transport table."""
@@ -19,4 +19,13 @@ class Transport(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(50))
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+
+
+class Shelf(db.Model):
+    """Create a Shelf table."""
+
+    __tablename__ = 'shelfs'
+
+    id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))

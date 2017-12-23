@@ -1,0 +1,48 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends 'layout.html' %}
+{% block body %}
+
+      <div class="jumbotron">
+        <h1 class="display-4">Shelfs</h1><hr>{{ utils.flashed_messages() }}
+        <table class="table table-bordered">
+          <thead>
+            <tr class="table-warning">
+              {% for x in range(10) %}
+              <th>{{x}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for y in range(10) %}
+            <tr>
+              {% for z in range(0,100,10) %}
+              {% if shelfs[y+z].product_id != 0 and shelfs[y+z].product_id != None %}
+              <td class="table-success">{% else %}
+              <td class="table-danger">{% endif %}{% if shelfs[y+z].product_id == None %}0{% elif shelfs[y+z].product_id == 0 %}0{% else %}{{ shelfs[y+z].product_id }}{% endif %}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="row marketing">
+          <div class="col-md-4">
+            <form method="POST" action="{{url_for('edit_shelfs')}}">
+              <input class="btn btn-primary" type="submit" value="Edit shelfs">
+            </form>
+            </div>
+          <div class="col-md-4">
+            <form method="POST" action="{{url_for('transfer')}}">
+              <input class="btn btn-danger" type="submit" value="Transfer">
+            </form><br><br>
+            <form method="POST" action="{{url_for('random_fill')}}">
+              <input class="btn btn-primary" type="submit" value="Random fill">
+            </form>
+          </div>
+          <div class="col-md-4">
+            <form method="POST" action="{{url_for('sort_shelfs')}}#">
+              <input class="btn btn-primary" type="submit" value="Sort">
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}
