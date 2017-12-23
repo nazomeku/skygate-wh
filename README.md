@@ -2,7 +2,23 @@
 
 Recruitment task for internship in [Skygate](https://skygate.pl/) with [live demo](http://nazo.pm/wh).
 
-Technologies used:
+
+## Application for warehouse management
+
+### Features:
+- manage shelf content (update, remove)
+- manage product (create, update, remove)
+- manage transport (update, remove, suspend)
+- transfer from shelf to transport
+- sort to optymalize transport flow
+
+### TBD:
+
+- some validations
+- code cleaning
+- tests
+
+### Technologies used:
 - Python 3.6
 - Gunicorn
 - Flask
@@ -11,24 +27,7 @@ Technologies used:
 - Bootstrap 4
 
 
-### Application for warehouse management
-
-Features:
-- manage shelf content (update, remove)
-- manage product (create, update, remove)
-- manage transport (update, remove, suspend)
-- transfer from shelf to transport
-- sort to optymalize transport flow
-
-TBD:
-
-- some validations
-- code cleaning
-- tests
-
-
-
-### Local deployment
+## Local deployment
 
 Install dependencies.
 ```sh
@@ -45,7 +44,7 @@ $ python run.py
 ```
 
 
-### Remote deployment (Ubuntu 16.04.3 LTS)
+## Remote deployment (Ubuntu 16.04.3 LTS)
 
 1. Clone repository
 ```sh
