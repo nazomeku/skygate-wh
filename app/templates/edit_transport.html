@@ -22,7 +22,7 @@
                 <select name="new_product" class="form-control">
                   <option disabled selected>{{transport.product_name}}</option>
                   {% for product in all_products %}
-                  <option value="{{ product.name }}">{{ product.name }}</option>
+                  <option value="{{ product.name }}">id{{product.id}} {{ product.name }}</option>
                   {% endfor %}
                 </select>
                 <br><input class="btn btn-success" type="submit" value="Update">

@@ -1,9 +1,10 @@
+{% import "bootstrap/utils.html" as utils %}
 {% extends "layout.html" %}
 {% block title %}Edit product{% endblock %}
 {% block body %}
 
     <div class="jumbotron">
-      <h1 class="display-4">Edit product</h1><hr><br>
+      <h1 class="display-4">Edit product</h1><hr>{{ utils.flashed_messages() }}
       <table class="table table-bordered">
         <thead>
           <tr class="table-warning">

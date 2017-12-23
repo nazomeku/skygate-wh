@@ -18,7 +18,7 @@
               {% for z in range(0,100,10) %}
               {% if shelfs[y+z].product_id != 0 and shelfs[y+z].product_id != None %}
               <td class="table-success">{% else %}
-              <td class="table-danger">{% endif %}{% if shelfs[y+z].product_id == None %}0{% elif shelfs[y+z].product_id == 0 %}0{% else %}{{ all_products[shelfs[y+z].product_id-1].name }}{% endif %}</td>
+              <td class="table-danger">{% endif %}{% if shelfs[y+z].product_id == None %}0{% elif shelfs[y+z].product_id == 0 %}0{% else %}{{ shelfs[y+z].product_id }}{% endif %}</td>
               {% endfor %}
             </tr>
             {% endfor %}
@@ -32,12 +32,15 @@
             </div>
           <div class="col-md-4">
             <form method="POST" action="{{url_for('transfer')}}">
-              <input class="btn btn-primary" type="submit" value="Transfer">
+              <input class="btn btn-danger" type="submit" value="Transfer">
+            </form><br><br>
+            <form method="POST" action="{{url_for('random_fill')}}">
+              <input class="btn btn-primary" type="submit" value="Random fill">
             </form>
           </div>
           <div class="col-md-4">
-            <form method="POST" action="#">
-              <input class="btn btn-primary" type="submit" value="Sort" disabled="disabled">
+            <form method="POST" action="{{url_for('sort_shelfs')}}#">
+              <input class="btn btn-primary" type="submit" value="Sort">
             </form>
           </div>
         </div>

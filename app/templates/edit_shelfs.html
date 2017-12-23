@@ -1,9 +1,10 @@
+{% import "bootstrap/utils.html" as utils %}
 {% extends "layout.html" %}
 {% block title %}Edit shelfs{% endblock %}
 {% block body %}
 
       <div class="jumbotron">
-        <h1 class="display-4">Edit shelfs</h1><hr>
+        <h1 class="display-4">Edit shelfs</h1><hr>{{ utils.flashed_messages() }}
         <table class="table table-bordered">
           <thead>
             <tr class="table-warning">
@@ -25,9 +26,9 @@
                 <div class="form-group">
                   <input name="old_shelf_{{y+z}}" type="hidden" value="{{ shelfs[y+z].product_id }}">
                   <select name="shelf_{{y+z}}" class="form-control">
-                    <option value="None" disabled selected>{% if shelfs[y+z].product_id not in id_list %}0{% else %}{{ all_products[shelfs[y+z].product_id-1].name }}{% endif %}</option>
+                    <option value="None" disabled selected>{% if shelfs[y+z].product_id not in id_list %}0{% else %}{{ shelfs[y+z].product_id }}{% endif %}</option>
                     {% for product in all_products %}
-                    <option value="{{ product.id }}">{{ product.name }}</option>
+                    <option value="{{ product.id }}">id{{product.id}} {{ product.name }}</option>
                     {% endfor %}
                     <option value="0">remove</option>
                   </select>
