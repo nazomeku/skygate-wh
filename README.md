@@ -12,11 +12,12 @@ Recruitment task for internship in [Skygate](https://skygate.pl/) with [live dem
 - transfer from shelf to transport
 - sort to optymalize transport flow
 
-### TBD:
+### Updates:
+- code cleaning (improved - separated services file with functions)
+- better sort (improved - proper rotation messages)
 
+### TBD:
 - some validations
-- code cleaning
-- better sort
 - more tests
 
 ### Technologies used:
