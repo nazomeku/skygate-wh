@@ -101,31 +101,58 @@ def sv_random_fill():
     """Random shelfs fill (with 1-3 per shelf rule)."""
     all_shelfs = Shelf.query.all()
     all_products = Product.query.all()
-    my_rnd = []
-    fin_rnd = []
     product_ids = []
     product_qty = []
+    total = []
 
     # Get all product ids.
     for product in all_products:
         product_ids.append(product.id)
         product_qty.append(product.quantity)
 
-    # Get 3 random values for each shelf.
+    # Get random product ids for each shelf.
     for _ in range(10):
-        random.shuffle(product_ids)
-        my_rnd.append(product_ids[:3])
+        temp = []
+        products_number = random.choice([1, 2, 3])
+        products_choose = random.sample(product_ids, products_number)
+        if len(products_choose) == 1:
+            for _ in range(10):
+                if product_qty[product_ids.index(products_choose[0])] > 0:
+                    temp += [products_choose[0]]
+                    product_qty[product_ids.index(products_choose[0])] -= 1
+                else:
+                    temp += [0]
+        elif len(products_choose) == 2:
+            for i in range(2):
+                for _ in range(5):
+                    if product_qty[product_ids.index(products_choose[i])] > 0:
+                        temp += [products_choose[i]]
+                        product_qty[product_ids.index(products_choose[i])] -= 1
+                    else:
+                        temp += [0]
+        else:
+            for i in range(3):
+                for _ in range(3):
+                    if product_qty[product_ids.index(products_choose[i])] > 0:
+                        temp += [products_choose[i]]
+                        product_qty[product_ids.index(products_choose[i])] -= 1
+                    else:
+                        temp += [0]
 
-    # Fill each element in list up to 10 values.
-    for i in range(10):
-        fin_rnd.append(my_rnd[i]*3+[random.choice(my_rnd[i])])
+            # Add last element.
+            products_number = random.choice(products_choose)
+            if product_qty[product_ids.index(products_number)] > 0:
+                temp += [products_number]
+                product_qty[product_ids.index(products_number)] -= 1
+            else:
+                temp += [0]
 
-    # Get merged list.
-    one_fin_rnd = [x for one_list in fin_rnd for x in one_list]
+        random.shuffle(temp)
+        total += temp
 
     # Assign products to shelfs.
     for x in range(100):
-        all_shelfs[x].product_id = one_fin_rnd[x]
+        all_shelfs[x].product_id = total[x]
     db.session.commit()
 
 
@@ -183,7 +210,8 @@ def sv_transfer():
             product = Product.query.get(order_list[x][0])
             product.quantity -= one_list_shelf.count('t{}'.format(x))
         else:
-            print('Transport suspended or product id not present in database.')
+            #print('Transport suspended or product id not present in database.')
+            pass
         if product.quantity <= 0:
             product.quantity = 0
         db.session.commit()
