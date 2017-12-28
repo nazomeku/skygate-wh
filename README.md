@@ -13,11 +13,11 @@ Recruitment task for internship in [Skygate](https://skygate.pl/) with [live dem
 - sort to optymalize transport flow
 
 ### Updates:
-- code cleaning (improved - separated services file with functions)
-- better sort (improved - proper rotation messages)
+- some validations (random fill with consideration of product quantity in warehouse)
+- code cleaning (separated services file with functions)
+- better sort (proper rotation messages)
 
 ### TBD:
-- some validations
 - more tests
 
 ### Technologies used:
