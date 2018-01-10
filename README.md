@@ -1,6 +1,6 @@
 # skygate-wh
 
-Recruitment task for internship in [Skygate](https://skygate.io/) with [live demo](http://nazo.pm/wh).
+Recruitment [task](https://github.com/nazomeku/skygate-wh/blob/master/task.txt) for internship in [Skygate](https://skygate.io/) with [live demo](http://nazo.pm/wh).
 
 
 ## Application for warehouse management
@@ -18,7 +18,7 @@ Recruitment task for internship in [Skygate](https://skygate.io/) with [live dem
 - better sort (proper rotation messages)
 
 ### TBD:
-- more tests
+- proper tests
 
 ### Technologies used:
 - Python 3.6
