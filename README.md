@@ -1,6 +1,6 @@
 # skygate-wh
 
-Recruitment task for internship in [Skygate](https://skygate.pl/) with [live demo](http://nazo.pm/wh).
+Recruitment task for internship in [Skygate](https://skygate.io/) with [live demo](http://nazo.pm/wh).
 
 
 ## Application for warehouse management
@@ -31,12 +31,12 @@ Recruitment task for internship in [Skygate](https://skygate.pl/) with [live dem
 
 ## Local deployment
 
-Install dependencies.
+1. Install dependencies.
 ```sh
 $ pip install -r requirements.txt
 ```
 
-Initlize database.
+2. Initlize database.
 ```sh
 $ python
 >>> from app import db
@@ -46,7 +46,7 @@ $ python run.py
 ```
 
 
-## Remote deployment (Ubuntu 16.04.3 LTS)
+## Remote deployment (Ubuntu 16.04 LTS)
 
 1. Clone repository
 ```sh
