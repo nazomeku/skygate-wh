@@ -42,6 +42,7 @@ $ python
 >>> from app import db
 >>> db.create_all()
 >>> exit()
+$ python run.py
 ```
 
 
@@ -73,7 +74,6 @@ $ python
 >>> from app import db
 >>> db.create_all()
 >>> exit()
-$ python run.py
 ```
 6. Test if application works (remember to allow port 5000 on firewall).
 ```sh
