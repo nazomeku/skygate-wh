@@ -1,0 +1,41 @@
+In the modern warehouse there are 10 autonomous shelves arranged in one line
+to the loading room.These shelves can move on their own, allowing faster access
+to the ordered products.
+
+The shelves set up automatically at night. When it is necessary to rearrange
+shelves, they can only move forward and the shelf at the beginning moves to the
+end (as in the case of the cyclic queue).
+
+Each shelf shall have space for 10 units from among one to three out of five
+product types. Every day, customers arrive to the warehouse in a pre-planned
+order (10 shipments).
+
+Each transport tries to take 5 units of one type of product. A transport truck
+will never demand several types of products or a quantity other than 5 units at
+the same time.
+
+In the case when a given type of product is missing in the warehouse, the 
+transport will left incomplete or empty.
+
+At night, the shelves should be sorted in such a way that the loading time of 
+all trucks is as short as possible.
+
+Using the Django REST Framework, Flask, any other framework or pure Python 
+language, write an application that:
+- will make possible to create, update and delete types of products, shelves
+  and transports;
+- will allow you to get shelves with their contents and a list of shipments
+  via front-end;
+- when you get a list of shelves, you will get the best possible sorted shelves
+  to suit your needs, so that you can handle all your shipments with the least
+  possible shelf movement.
+
+The task should use a relational database, create appropriate models and 
+relationships.
+
+The code should have unit and integration tests where needed
+(using mocks if necessary).
+
+Don't worry if the implemented algorithm is not very optimal, it is more
+important for us to be able to solve problems, we wouldn't want that the search
+for an ideal solution would caused that the project would not be completed :)
